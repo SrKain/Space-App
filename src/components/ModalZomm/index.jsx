@@ -11,7 +11,11 @@ const Overlay = styled.div`
 `;
 
 const Dialog = styled.dialog`
-  
+  position: fixed;
+  top: 10vh;
+  width: 60vw;
+  height: 80vh;
+  max-height: 100%;
 `
 
 export default function ModalZomm(props) {
