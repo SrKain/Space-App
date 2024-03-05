@@ -63,7 +63,7 @@ const FooterStyled = styled.footer`
 export default function App() {
   const [Image, setImages] = useState(Images);
   const [ActiveImage, setActiveImage] = useState(null);
-  const [Search, setSearch] = useState('');
+  const [Search, setSearch] = useState("");
 
   const onFav = (foto) => {
     if (foto.id === ActiveImage?.id) {
@@ -83,15 +83,18 @@ export default function App() {
     );
   };
 
-  const onSearch = (value) => {
-    console.log(value)
-    setSearch(value);
+  const FilterImages = Image.filter((item) =>
+    item.titulo.toLowerCase().includes(Search)
+  );
+
+  function onSearch(value) {
+    setSearch(value.toLowerCase());
   }
   return (
     <FundoGradient>
       <GlobalStyle />
       <AppContainer>
-        <Header Search={Search} onSearch={value => onSearch(value)} />
+        <Header Search={Search} onSearch={(value) => onSearch(value)} />
         <MainContainer>
           <GridContent>
             <Sidebar />
@@ -99,7 +102,7 @@ export default function App() {
               <Galery
                 onFav={onFav}
                 active={(item) => setActiveImage(item)}
-                images={Image}
+                images={FilterImages}
               />
             </DefaultContent>
           </GridContent>

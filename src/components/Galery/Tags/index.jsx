@@ -26,7 +26,7 @@ export default function Tags() {
     <TagContainer>
       <Title>Busque por tags:</Title>
       {tags.map((item) => (
-        <ButtonTag key={item.id}>
+        <ButtonTag  key={item.id}>
           {item.titulo}
         </ButtonTag>
       ))}
