@@ -33,7 +33,7 @@ const IconeLupa = styled.img`
 const TextInput = (props) => {
     return (
         <ContainerEstilizado>
-            <CampoTextoEstilizado placeholder="O que você procura?" {...props} />
+            <CampoTextoEstilizado onChange={(evento) => props.onSearch(evento.target.value)} placeholder="O que você procura?" {...props} />
             <IconeLupa src={searchIcon} alt="ícone de lupa" />
         </ContainerEstilizado>
     )

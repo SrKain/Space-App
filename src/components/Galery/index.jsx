@@ -58,6 +58,7 @@ export default function Galery(props) {
           <UlStyled>
             {props.images.map((item) => (
               <FotoCard
+                onFav={props.onFav}
                 cap={true}
                 foto={item}
                 active={props.active}

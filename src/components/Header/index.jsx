@@ -10,11 +10,11 @@ const HeaderStyled = styled.header`
   }
 `;
 
-const Header = () => {
+const Header = (props) => {
     return (
       <HeaderStyled>
         <img src="/assets/imagens/logo.png" alt="Logo do Space App"/>
-        <TextInput/>
+        <TextInput Search={props.Search} onSearch={props.onSearch} />
       </HeaderStyled>
     );
   };
