@@ -63,9 +63,9 @@ const FooterStyled = styled.footer`
 export default function App() {
   const [Image, setImages] = useState(Images);
   const [ActiveImage, setActiveImage] = useState(null);
-  const [Search, setSearch] = useState("");
+  const [filterImages, setFilterImages] = useState(Image);
 
-  const onFav = (foto) => {
+  function onFav(foto) {
     if (foto.id === ActiveImage?.id) {
       setActiveImage({
         ...ActiveImage,
@@ -81,28 +81,39 @@ export default function App() {
         };
       })
     );
-  };
-
-  const FilterImages = Image.filter((item) =>
-    item.titulo.toLowerCase().includes(Search)
-  );
-
-  function onSearch(value) {
-    setSearch(value.toLowerCase());
   }
+
+  function onSearch(search) {
+    if (!!search) {
+      setFilterImages(
+        Image.filter((item) => item.titulo.toLowerCase().includes(search))
+      );
+    }
+  }
+
+  function onTag(tag) {
+    if (tag > 0) {
+      setFilterImages(Image.filter((item) => item.tagId === tag));
+    } else {
+      setFilterImages(Image);
+    }
+  }
+
   return (
     <FundoGradient>
       <GlobalStyle />
       <AppContainer>
-        <Header Search={Search} onSearch={(value) => onSearch(value)} />
+        <Header onSearch={(value) => onSearch(value.toLowerCase())} />
         <MainContainer>
           <GridContent>
             <Sidebar />
             <DefaultContent>
               <Galery
+                onTag={(value) => onTag(value)}
                 onFav={onFav}
                 active={(item) => setActiveImage(item)}
-                images={FilterImages}
+                filterImages={filterImages}
+                images={Image}
               />
             </DefaultContent>
           </GridContent>

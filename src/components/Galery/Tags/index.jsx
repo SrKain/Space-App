@@ -21,12 +21,12 @@ const ButtonTag = styled.button`
   border: 1.5px solid #7b78e5;
 `;
 
-export default function Tags() {
+export default function Tags(props) {
   return (
     <TagContainer>
       <Title>Busque por tags:</Title>
       {tags.map((item) => (
-        <ButtonTag  key={item.id}>
+        <ButtonTag onClick={() => props.onTag(item.id) } key={item.id}>
           {item.titulo}
         </ButtonTag>
       ))}

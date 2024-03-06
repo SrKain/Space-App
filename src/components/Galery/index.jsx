@@ -51,12 +51,12 @@ export default function Galery(props) {
   const [Exib, setExib] = useState(5);
   return (
     <>
-      <Tags />
+      <Tags onTag={props.onTag} />
       <ContainerGalery>
         <GridGalery>
           <TitleStyled>Navegue pela galeria</TitleStyled>
           <UlStyled>
-            {props.images.map((item) => (
+            {props.filterImages.map((item) => (
               <FotoCard
                 onFav={props.onFav}
                 cap={true}
